@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_server.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 18:08:00 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/06/08 18:53:49 by sde-mull         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:24:36 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	ft_handler(int sig, siginfo_t *info, void *context)
 {
-	static int str;
-	static int bits;
+	static int	str;
+	static int	bits;
+
 	(void)context;
-	
 	if (sig == SIGUSR1)
 		str |= (128 >> bits);
 	bits++;
@@ -34,13 +34,13 @@ void	ft_handler(int sig, siginfo_t *info, void *context)
 	}
 }
 
-int main(void)
+int	main(void)
 {
-	struct sigaction sa;
-	
+	struct sigaction	sa;
+
 	sa.sa_sigaction = &ft_handler;
 	sa.sa_flags = SA_SIGINFO;
-    ft_printf("The pid number is: %d\n", getpid());
+	ft_printf("The pid number is: %d\n", getpid());
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	while (1)

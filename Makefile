@@ -38,7 +38,8 @@ clean:
 
 fclean: clean
 	@echo "$(RED)[ Removing everything! ] $(RESET)"
-	@$(CD) $(LIB_DIR)/$(PRINT_DIR) && make -i fclean
+	@$(CD) $(LIB_DIR)/$(PRINT_DIR) && make fclean
+	@$(CD) $(LIB_DIR) && make fclean
 	@$(RM) $(NAME_CLIENT) $(NAME_SERVER)
 	@echo "$(RED)[ Everything has been removed! ] $(RESET)"
 

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 19:50:28 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:26 by sde-mull         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:26:53 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_backup(char *saved_line)
+char	*ft_backup(char *saved)
 {
 	int		index;
 	int		index_2;
@@ -20,21 +20,21 @@ char	*ft_backup(char *saved_line)
 
 	index = 0;
 	index_2 = 0;
-	while (saved_line[index] != '\0' && saved_line[index] != '\n')
+	while (saved[index] != '\0' && saved[index] != '\n')
 		index++;
-	if (saved_line[index] == '\0')
+	if (saved[index] == '\0')
 	{
-		free(saved_line);
+		free(saved);
 		return (NULL);
 	}
-	p_line = (char *)malloc(sizeof(char) * (ft_strlenn(saved_line) - index + 1));
+	p_line = (char *)malloc(sizeof(char) * (ft_strlenn(saved) - index + 1));
 	if (p_line == 0)
 		return (NULL);
 	index++;
-	while (saved_line[index])
-		p_line[index_2++] = saved_line[index++];
+	while (saved[index])
+		p_line[index_2++] = saved[index++];
 	p_line[index_2] = '\0';
-	free(saved_line);
+	free(saved);
 	return (p_line);
 }
 

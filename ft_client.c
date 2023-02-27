@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_client.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sde-mull <sde.mull@student.42lisboa.com    +#+  +:+       +#+        */
+/*   By: sde-mull <sde-mull@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:26:59 by sde-mull          #+#    #+#             */
-/*   Updated: 2022/06/12 15:37:17 by sde-mull         ###   ########.fr       */
+/*   Updated: 2022/06/15 15:26:03 by sde-mull         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_minitalk.h"
 
-void ft_failure()
+void	ft_failure(void)
 {
 	ft_printf("Wrong PID\n");
 	exit(EXIT_FAILURE);
 }
 
-void ft_sucess(int sig)
+void	ft_sucess(int sig)
 {
 	if (sig)
 		ft_printf("Everything received!\n");
@@ -27,7 +27,7 @@ void ft_sucess(int sig)
 
 void	ft_send_char(int pid, char c)
 {
-	int bits;
+	int	bits;
 
 	bits = 0;
 	while (bits < 8)
@@ -45,14 +45,14 @@ void	ft_send_char(int pid, char c)
 	}
 }
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	int pid;
-	char *str;
-	int i;
-	
+	int		pid;
+	char	*str;
+	int		i;
+
 	i = -1;
-    if (argc > 3 || argc <= 2)
+	if (argc > 3 || argc <= 2)
 		return (ft_printf("Error!\n\"./client [PID] [STRING]\"\n"));
 	pid = ft_atoi(argv[1]);
 	if (!pid)
@@ -62,6 +62,6 @@ int main(int argc, char *argv[])
 	while (str[++i] != '\0')
 		ft_send_char(pid, str[i]);
 	ft_send_char(pid, str[i]);
-	while(1)
+	while (1)
 		pause();
 }

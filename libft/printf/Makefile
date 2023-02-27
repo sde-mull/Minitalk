@@ -21,7 +21,7 @@ $(NAME): libft $(OBJS)
 @$(SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): libft $(OBJS)
+@$(NAME): libft $(OBJS)
 	@cp $(LFT_DIR)/libft.a ./libftprintf.a
 	@ar rcs $@ $(OBJS)
 
